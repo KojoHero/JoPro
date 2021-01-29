@@ -21,6 +21,9 @@ class DocxModel(models.Model):
     docx = models.FileField(upload_to='files')
     title = models.CharField(max_length=500, name='title')
 
+    def __str__(self):
+        return self.title
+
 
 class CatModel(models.Model):
     status = models.CharField(max_length=100)
@@ -45,7 +48,10 @@ class ListModel(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='User', on_delete=models.CASCADE)
     title = models.ForeignKey(DocxModel, on_delete=models.CASCADE, related_name='topic')
     status = models.ForeignKey(CatModel, on_delete=models.CASCADE, default="TO DO", name='status')
-    expected_EndDate = models.DateField(default=strftime("%Y-%m-%d"), name='expected_EndDate')
+    endDate = models.DateField(default=strftime("%Y-%m-%d"), name='endDate')
+
+    def __str__(self):
+        return self.user
 
 
 

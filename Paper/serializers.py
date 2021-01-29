@@ -72,5 +72,5 @@ class ListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ListModel
-        fields = ('user', 'title', 'status', 'expected_EndDate')
+        fields = ('user', 'title', 'status', 'endDate')
 

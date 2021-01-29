@@ -47,7 +47,7 @@ class ListView(generics.ListAPIView):
     serializer_class = ListSerializer
 
     def perform_create(self, serializer):
-        serializer.save(user=self.request.user, status=self.request.status)
+        serializer.save(user=self.request.user, status=self.request.status, title=self.request.title)
 
 
 

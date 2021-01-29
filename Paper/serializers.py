@@ -68,17 +68,9 @@ class UserSerializer(serializers.ModelSerializer):
 class ListSerializer(serializers.ModelSerializer):
     user = serializers.ReadOnlyField(source='user.username')
     status = serializers.ReadOnlyField(source='status.status')
+    title = serializers.ReadOnlyField(source='title.title')
 
     class Meta:
         model = ListModel
-        fields = ('user', 'document', 'status', 'expected_EndDate')
+        fields = ('user', 'title', 'status', 'expected_EndDate')
 
-    # def create(self, validated_data):
-    #     user_data = validated_data.pop('user')
-    #     user = UserSerializer.create(UserSerializer(), validated_data=user_data)
-    #     listA, created = ListModel.objects.update_or_create(user=user,
-    #                         document=validated_data.pop('document'),
-    #                         status=validated_data.pop('status'),
-    #                         expected_EndDate=validated_data.pop('expected_EndDate'),
-    #                     )
-    #     return listA

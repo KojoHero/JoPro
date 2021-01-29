@@ -1,5 +1,5 @@
 from django.contrib.auth import login
-from rest_framework import generics
+from rest_framework import generics, filters
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
 from knox.views import LoginView as KnoxLoginView
@@ -40,11 +40,15 @@ class FAQView(generics.ListAPIView):
     serializer_class = FAQSerializer
     queryset = FAQModel.objects.all()
     permission_classes = [AllowAny,]
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['question', 'answer']
 
 
 class ListView(generics.ListAPIView):
     queryset = ListModel.objects.all()
     serializer_class = ListSerializer
+    # filter_backends = [filters.SearchFilter]
+    # search_fields = ['user', 'title', 'status']
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user, status=self.request.status, title=self.request.title)

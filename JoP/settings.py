@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'Paper',
     'knox',
+    # 'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -135,3 +136,7 @@ REST_FRAMEWORK = {
         'knox.auth.TokenAuthentication',
     ),
 }
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+# }

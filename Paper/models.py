@@ -18,8 +18,8 @@ class BlogModel(models.Model):
 
 
 class DocxModel(models.Model):
-    docx = models.FileField(upload_to='files')
     title = models.CharField(max_length=500, name='title')
+    docx = models.FileField(upload_to='files')
 
     def __str__(self):
         return self.title
@@ -51,7 +51,7 @@ class ListModel(models.Model):
     endDate = models.DateField(default=strftime("%Y-%m-%d"), name='endDate')
 
     def __str__(self):
-        return self.user
+        return str(self.user)
 
 
 

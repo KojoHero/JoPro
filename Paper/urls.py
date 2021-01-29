@@ -9,6 +9,6 @@ urlpatterns = [
     path('upload/', DocxView.as_view(), name='upload'),
     path('logout/', knox_views.LogoutView.as_view(), name='logout'),
     path('logoutall/', knox_views.LogoutAllView.as_view(), name='logoutall'),
-    path('lists/', ListView.as_view(), name='list'),
+    path('list/', ListView.as_view(), name='list'),
     path('FAQ/', FAQView.as_view(), name='FAQ'),
 ]

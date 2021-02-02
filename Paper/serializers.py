@@ -68,7 +68,7 @@ class UserSerializer(serializers.ModelSerializer):
 class ListSerializer(serializers.ModelSerializer):
     user = serializers.ReadOnlyField(source='user.username')
     status = serializers.ReadOnlyField(source='status.status')
-    title = serializers.ReadOnlyField(source='title.title')
+    title = serializers.ReadOnlyField(source='topic.title')
 
     class Meta:
         model = ListModel

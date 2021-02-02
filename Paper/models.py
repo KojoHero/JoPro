@@ -41,12 +41,12 @@ class FAQModel(models.Model):
     answer = models.TextField(max_length=1000)
 
     def __str__(self):
-        return self.question
+        return '%s  : %s' % (self.question, self.answer)
 
 
 class ListModel(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='User', on_delete=models.CASCADE)
-    title = models.ForeignKey(DocxModel, on_delete=models.CASCADE, related_name='topic')
+    topic = models.ForeignKey(DocxModel, on_delete=models.CASCADE, related_name='topic')
     status = models.ForeignKey(CatModel, on_delete=models.CASCADE, default="TO DO", name='status')
     endDate = models.DateField(default=strftime("%Y-%m-%d"), name='endDate')
 

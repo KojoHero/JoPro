@@ -1,4 +1,5 @@
 from django.contrib.auth import login
+from django.db.models import Model
 from rest_framework import generics, filters
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
@@ -47,8 +48,8 @@ class FAQView(generics.ListAPIView):
 class ListView(generics.ListAPIView):
     queryset = ListModel.objects.all()
     serializer_class = ListSerializer
-    # filter_backends = [filters.SearchFilter]
-    # search_fields = ['user', 'title', 'status']
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['topic__title', 'status__status', 'user__username']
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user, status=self.request.status, title=self.request.title)

@@ -51,7 +51,7 @@ class ListModel(models.Model):
     endDate = models.DateField(default=strftime("%Y-%m-%d"), name='endDate')
 
     def __str__(self):
-        return str(self.user)
+        return '%s : %s : %s' % (str(self.user), str(self.topic), str(self.status))
 
 
 

@@ -36,6 +36,9 @@ class DocxView(generics.CreateAPIView):
     queryset = DocxModel.objects.all()
     permission_classes = [IsAuthenticated,]
 
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
 
 class FAQView(generics.ListAPIView):
     serializer_class = FAQSerializer

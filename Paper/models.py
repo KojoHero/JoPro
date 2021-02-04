@@ -18,11 +18,12 @@ class BlogModel(models.Model):
 
 
 class DocxModel(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='User1', on_delete=models.CASCADE)
     title = models.CharField(max_length=500, name='title')
     docx = models.FileField(upload_to='files')
 
     def __str__(self):
-        return self.title
+        return '%s : %s' %(self.title, self.user)
 
 
 class CatModel(models.Model):
@@ -48,7 +49,7 @@ class ListModel(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='User', on_delete=models.CASCADE)
     topic = models.ForeignKey(DocxModel, on_delete=models.CASCADE, related_name='topic')
     status = models.ForeignKey(CatModel, on_delete=models.CASCADE, default="TO DO", name='status')
-    endDate = models.DateField(default=strftime("%Y-%m-%d"), name='endDate')
+    Due_Date = models.DateField(default=strftime("%Y-%m-%d"))
 
     def __str__(self):
         return '%s : %s : %s' % (str(self.user), str(self.topic), str(self.status))

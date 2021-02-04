@@ -48,6 +48,7 @@ class BlogSerializer(serializers.ModelSerializer):
 
 
 class DocxSerializer(serializers.ModelSerializer):
+    user = serializers.ReadOnlyField(source='user.username')
     class Meta:
         model = DocxModel
         fields = '__all__'
@@ -72,5 +73,5 @@ class ListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ListModel
-        fields = ('user', 'title', 'status', 'endDate')
+        fields = ('user', 'title', 'status', 'Due_Date')
 

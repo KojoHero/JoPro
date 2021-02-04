@@ -30,12 +30,9 @@ class RegSerializers(serializers.ModelSerializer):
 
 
 class LogSerializer(serializers.ModelSerializer):
-    provider = serializers.CharField(max_length=255, required=True)
-    access_token = serializers.CharField(max_length=4096, required=True, trim_whitespace=True)
-
     class Meta:
         model = User
-        fields = ['email', 'password']
+        fields = ['username', 'password']
 
 
 class CatSerializer(serializers.ModelSerializer):
